@@ -1,0 +1,94 @@
+----------------------------------------------------------------------------------------------------
+Name: Gin Sour
+Recipe: 25B_SourSaison
+Date: 11/12/2016
+Batch Size: 5 gallons
+Boil Time: 60 minutes
+
+10.5 lb.	2 Row Pale 
+0.5 lb.	white wheat
+0.5 lb. wheat
+2	campden tablets
+2 oz	Northern Brewer Hops @ 8.5AA
+1	Omega Bit O' Funk #2 Brett Blend
+1.25 oz		american oak cubes soaked in Tanqueray gin
+
+Mash:
+
+Mashed for approximately 1 hour with 5 gallons of water
+	Note: brought water to 162F to dough in
+
+Rinsed/sparged BIAB with 2 gallons of water
+	Note: assume 0.125 gal/lb absorption =~ 1.5 gallons
+
+Preboil: 11.6 BRIX -> ~1.047 SG with 5.5 gallons
+
+Add additional 1 gallon of water to negate 1 gallon boil off losses
+
+Boil:
+
+1 oz	Northern Brewer		@ 60 minutes
+0.5 oz	Northern Brewer		@ 15 minutes
+0.5 oz	Northern Brewer		@ 5 minutes
+
+Postboil: 13.1 BRIX -> ~ 1.053 SG
+
+Fermentation:
+
+Pitched no starter
+
+11/30/2016 	5.2 BRIX -> ~1.020 SG
+11/30/2016	Added oak cubes soaked in gin (18 days)
+
+----------------------------------------------------------------------------------------------------
+
+
+----------------------------------------------------------------------------------------------------
+Name: Blueberry and Cherry Sour
+Recipe: 25B_SourSaison
+Date: 10/22/2016
+Batch Size: 10 gallons 
+Boil Time: 60 minutes
+
+21 lb. 	2 Row Pale
+1 lb.	white wheat
+1 lb. 	wheat
+2	campden tablets
+4 oz	Northern Brewer Hops @ 8.5AA
+1	WLP667 Lactobacillus Delbrueckii
+2	WLP645 Brettanomyces Claussenii
+
+Mash:
+
+Mashed for approximately 1 hour at 152F with 10 gallons of water
+	Note: brought water to 160F to dough in at
+
+Rinsed/sparged BIAB with 4 gallons of water
+	Note: assume 0.125 gal/lb absorption =~ 3 gallons
+
+Preboil: 11.8 BRIX -> ~1.048 SG with 11 gallons
+
+Add additional 1 gallon of water to negate 1 gallon boil off losses
+
+Boil:
+
+2 oz	Northern Brewer		@ 60 minutes
+1 oz	Northern Brewer		@ 15 minutes
+1 oz	Northern Brewer		@ 5 minutes
+
+Total IBU: 36
+Postboil: 12.5 BRIX -> ~1.050
+
+Fermentation:
+
+Split batch into 2, 6.5 gallon plastic buckets
+
+Pitched with starter
+
+Later the same day added 3 lb. pureed frozen cherries to one and 3 lb. pureed frozen blueberries to the other
+
+11/11/2016	5.3 Brix -> ~1.021 SG Blueberry
+11/11/2016	5.0 Brix -> ~1.020 SG Cherry
+
+11/30/2016	Both unchanged
+----------------------------------------------------------------------------------------------------
