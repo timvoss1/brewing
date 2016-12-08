@@ -1,0 +1,24 @@
+Volume losses
+
+grain absoption: 		0.125 	gal/lb
+wort shrinkage:			4% 	total volume
+boil off:			
+	= power[W]*time[hr]/2368	gal
+dead space:			???	gal
+evaporation			???	gal/hr
+
+Vol_needed/1.04 = target + 0.125*lbs + power*time/2368 + dead_space
+
+
+
+Mash water
+
+0.25 <= volume/lbs <= 0.50, typical = 0.375 gal/lb
+
+
+
+
+Gravity/grain
+
+pounds of grain needed:
+	= (OG-1)*1000*Volume/(potential*eta)	Note: for potential see data file
