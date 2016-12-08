@@ -22,3 +22,12 @@ Gravity/grain
 
 pounds of grain needed:
 	= (OG-1)*1000*Volume/(potential*eta)	Note: for potential see data file
+
+
+
+Bitterness
+
+IBU:
+	= weight[oz]*utilization[]*AA[]*7489/Volume_Final[gal]/C_gravity
+C_gravity	
+	= 1 + ((Volume_Start[gal] - 1.050)/0.2)
