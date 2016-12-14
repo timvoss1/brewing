@@ -1,0 +1,11 @@
+OG,1.050
+eta,0.70
+Vol,5.5
+Malt,2-Row, 0.55
+Malt,lactose, 0.08
+Malt,roasted barley, 0.075
+Malt,munich, 0.075
+Malt,crystal 60L, 0.075
+Malt,chocolate malt, 0.06
+Malt,flaked oats, 0.035
+Malt,flaked barley, 0.035

@@ -1,3 +1,17 @@
+User Input:
+	OG 	Target original gravity
+	{Bill}	Malt bill in percentages
+	eta 	Brew house effeciency
+	V	Final volume 
+
+Data Input:
+	{POT}	Potential Gravity
+			http://beersmith.com/Grains/Grains/GrainList.htm
+			origin, type, color, mash, potential, max
+	{FRUIT} Potential gravity from fruit
+			https://www.morebeer.com/articles/fruit_in_beer
+	
+
 Volume losses
 
 grain absoption: 		0.125 	gal/lb
@@ -20,8 +34,10 @@ Mash water
 
 Gravity/grain
 
-pounds of grain needed:
-	= (OG-1)*1000*Volume/(potential*eta)	Note: for potential see data file
+GU = (OG-1)*1000
+total_GU = GU*V
+perc_GU = {Bill_i}*total_GU
+grain = perc_GU/(POT_i*eta)
 
 
 
