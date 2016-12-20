@@ -12,7 +12,9 @@ Module Module1
         Dim name_data = "Data"
         Dim name_input = "16A_LeftHand.txt"
 
-        ParseInput(name_input, path)
+        Dim myRecipe As Recipe
+
+        myRecipe = ParseInput(name_input, path)
 
         Console.WriteLine("Hello World")
         Console.Read()
@@ -20,12 +22,13 @@ Module Module1
 
     End Sub
 
-    Sub ParseInput(filename As String, path As String)
+    Function ParseInput(filename As String, path As String) As Recipe
 
         Dim sr As StreamReader
         Dim read As String, id As String, myRecipe As New Recipe
-        Dim readArr() As String
+        Dim readArr() As String, counter As Integer
 
+        counter = -1
         sr = My.Computer.FileSystem.OpenTextFileReader(path + filename)
 
         'loop through text file
@@ -72,9 +75,15 @@ Module Module1
                         myRecipe.tboil = CDbl(read)
                     End If
                 ElseIf id = "Grain" Then
+                    counter = counter + 1
                     readArr = Split(read, ":")
+                    myRecipe.GrainName(counter) = readArr(0)
+                    read = Replace(readArr(1), " ", "")
+                    read = CDbl(read)
+                    myRecipe.GrainPerc(counter) = read
+                ElseIf id = "End" Then
+                    GoTo ExitSub
 
-                    'add class code to make arrays for grain name and grain percentage
 
                 End If
 
@@ -85,9 +94,32 @@ Module Module1
 
         Next
 
+ExitSub:
 
 
+        Return myRecipe
 
-    End Sub
+    End Function
+
+
+    Function oneDArrayParse(filename As String, path As String) As VariantType()
+
+        'write generic 1d csv array parser
+
+        Dim returnArr() As VariantType
+
+        Return returnArr
+
+    End Function
+
+    Function twoDArrayParse(filename As String, path As String) As VariantType
+
+        'write generic 2d csv array parser
+
+        Dim returnArr() As VariantType
+
+        Return returnArr
+
+    End Function
 
 End Module

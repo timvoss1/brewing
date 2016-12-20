@@ -17,9 +17,9 @@ munich: 7.5
 crystal 60L: 7.5
 chocolate: 6
 flaked oats: 3.5
-flaked barley 3.5
+flaked barley: 3.5
 
-Be
+Begin Yeast
 1	campden tablet per 5 gallons of water
 1	American yeast
 	East Kent Golding
