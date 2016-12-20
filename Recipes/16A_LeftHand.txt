@@ -1,20 +1,25 @@
+Begin Name
 Left Hand Milk Stout
 
-1.059 OG
-6.4% ABV
-22 IBU
-40 SRM
-Mash @
-Boil 60 minutes
+Begin Target
+OG: 1.059
+ABV: 6.4
+IBU: 22
+SRM: 40
+t_mash: 154
+t_boil: 1
 
-55.0%	pale/marris otter
-8.00%	lactose
-7.50%	roasted barley
-7.50%	munich 
-7.50%	crystal 60L
-6.00%	chocolate 
-3.50%	flaked oats
-3.50%	flaked barley
+Begin Grain
+2-row: 55
+lactose: 8
+roasted barley: 7.5
+munich: 7.5
+crystal 60L: 7.5
+chocolate: 6
+flaked oats: 3.5
+flaked barley 3.5
+
+Be
 1	campden tablet per 5 gallons of water
 1	American yeast
 	East Kent Golding
