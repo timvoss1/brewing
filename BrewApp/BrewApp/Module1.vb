@@ -5,19 +5,88 @@ Module Module1
 
     Sub Main()
 
+        'Equipment Profile <--- Write input deck and reader
+        Dim eta As Double
+        Dim dMash As Double
+        eta = 0.7
+        dMash = 13
+
         'Location of code
-        Dim path = "C:\Users\Tim\Desktop\Local-Repo\brewing\Recipes\"
+        Dim inp_path = "C:\Users\Tim\Desktop\Local-Repo\brewing\Recipes\"
+        Dim data_path = "C:\Users\Tim\Desktop\Local-Repo\brewing\Data\"
 
         'Folder/File names
-        Dim name_data = "Data"
+        Dim name_data = "GrainPotential.csv"
         Dim name_input = "16A_LeftHand.txt"
 
+        'Data objects
         Dim myRecipe As Recipe
+        Dim myData(,) As String
 
-        myRecipe = ParseInput(name_input, path)
+        myRecipe = ParseInput(name_input, inp_path)
+        myData = oneDArrayParse(name_data, data_path)
 
-        Console.WriteLine("Hello World")
-        Console.Read()
+        'Dependent Values
+        Dim GU As Double 'gravity units
+        Dim TGU As Double 'total gravity units
+        Dim grainName() As String
+        Dim grainPote() As Double
+        Dim grainPerc() As Double
+        Dim grainWeig() As Double
+        Dim totWeight As Double
+        Dim WaterNeed As Double
+        Dim WaterMash As Double
+        Dim spargeHeight As Double
+
+        'Calculations
+        GU = (myRecipe.OG - 1) * 1000
+        TGU = GU * myRecipe.vol
+
+        grainName = myRecipe.getGrainName
+        grainPerc = myRecipe.getGrainPerc
+
+        ReDim grainPote(grainName.Length - 1)
+        ReDim grainWeig(grainName.Length - 1)
+
+        Console.WriteLine(myRecipe.Name)
+        Console.WriteLine()
+        Console.WriteLine("Target gravity: " + CStr(myRecipe.OG))
+        Console.WriteLine("Final volume: " + CStr(myRecipe.vol))
+        Console.WriteLine()
+
+        'get potential gravity per grain and weight
+        For i = 0 To grainName.Length - 1
+            If Not (IsNothing(grainName(i))) Then
+
+                For j = 0 To myData.Length / 7 - 1
+                    If InStr(myData(0, j), grainName(i), CompareMethod.Text) > 0 Then
+
+                        grainPote(i) = (CDbl(myData(5, j)) - 1) * 1000
+                        grainWeig(i) = grainPerc(i) / 100 * TGU / (grainPote(i) * eta)
+                        totWeight = totWeight + grainWeig(i)
+
+                        Console.WriteLine(CStr(Math.Round(grainWeig(i), 2)) + " lb." + vbTab + grainName(i))
+
+                    End If
+                Next
+            End If
+        Next
+
+        Console.WriteLine("--------")
+        Console.WriteLine(CStr(Math.Round(totWeight, 2)))
+
+        WaterNeed = (myRecipe.vol + 0.125 * totWeight + 1 + 1) * 1.04
+        WaterMash = 0.375 * totWeight
+        spargeHeight = WaterMash * 231 / (Math.PI * dMash ^ 2 / 4)
+
+        Console.WriteLine()
+        Console.WriteLine(CStr(Math.Round(WaterMash, 2)) + vbTab + vbTab + "Water in mash tun, set sparge arm to " + CStr(Math.Round(spargeHeight, 2)) + " inches")
+        Console.WriteLine(CStr(Math.Round(WaterNeed - WaterMash, 2)) + vbTab + vbTab + "Water in HLT")
+        Console.WriteLine("--------")
+        Console.WriteLine(CStr(Math.Round(WaterNeed, 2)))
+
+
+        Console.ReadKey()
 
 
     End Sub
@@ -50,29 +119,26 @@ Module Module1
                     myRecipe.Name = read
                 ElseIf id = "Target" Then
                     If InStr(read, "OG") Then
-                        read = Replace(read, "OG:", "")
-                        read = Replace(read, " ", "")
+                        read = Replace(read, "OG: ", "")
                         myRecipe.OG = CDbl(read)
                     ElseIf InStr(read, "ABV") Then
-                        read = Replace(read, "ABV:", "")
-                        read = Replace(read, " ", "")
+                        read = Replace(read, "ABV: ", "")
                         myRecipe.ABV = CDbl(read)
                     ElseIf InStr(read, "IBU") Then
-                        read = Replace(read, "IBU:", "")
-                        read = Replace(read, " ", "")
+                        read = Replace(read, "IBU: ", "")
                         myRecipe.IBU = CDbl(read)
                     ElseIf InStr(read, "SRM") Then
-                        read = Replace(read, "SRM:", "")
-                        read = Replace(read, " ", "")
+                        read = Replace(read, "SRM: ", "")
                         myRecipe.SRM = CDbl(read)
                     ElseIf InStr(read, "t_mash") Then
-                        read = Replace(read, "t_mash:", "")
-                        read = Replace(read, " ", "")
+                        read = Replace(read, "t_mash: ", "")
                         myRecipe.tmash = CDbl(read)
                     ElseIf InStr(read, "t_boil") Then
-                        read = Replace(read, "t_boil:", "")
-                        read = Replace(read, " ", "")
+                        read = Replace(read, "t_boil: ", "")
                         myRecipe.tboil = CDbl(read)
+                    ElseIf InStr(read, "vol:") Then
+                        read = Replace(read, "vol: ", "")
+                        myRecipe.vol = CDbl(read)
                     End If
                 ElseIf id = "Grain" Then
                     counter = counter + 1
@@ -102,11 +168,32 @@ ExitSub:
     End Function
 
 
-    Function oneDArrayParse(filename As String, path As String) As VariantType()
+    Function oneDArrayParse(filename As String, path As String) As String(,)
 
-        'write generic 1d csv array parser
+        Dim sr As StreamReader
+        Dim read As String, readArr() As String, returnArr(,) As String
 
-        Dim returnArr() As VariantType
+        sr = My.Computer.FileSystem.OpenTextFileReader(path + filename)
+
+        read = sr.ReadLine()
+        readArr = Split(read, ",")
+        ReDim returnArr(readArr.Length - 1, File.ReadAllLines(path + filename).Length - 1)
+
+        For i = 0 To readArr.Length - 1
+            returnArr(i, 0) = readArr(i)
+        Next
+
+        For i = 1 To File.ReadLines(path + filename).Count() - 2
+
+            read = sr.ReadLine()
+            readArr = Split(read, ",")
+
+            For j = 0 To readArr.Length - 1
+                returnArr(j, i) = readArr(j)
+            Next
+
+
+        Next
 
         Return returnArr
 
@@ -116,9 +203,9 @@ ExitSub:
 
         'write generic 2d csv array parser
 
-        Dim returnArr() As VariantType
+        'Dim returnArr() As VariantType
 
-        Return returnArr
+        'Return returnArr
 
     End Function
 

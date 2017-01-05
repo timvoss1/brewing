@@ -8,16 +8,17 @@ IBU: 22
 SRM: 40
 t_mash: 154
 t_boil: 1
+vol: 6
 
 Begin Grain
-2-row: 55
-lactose: 8
-roasted barley: 7.5
-munich: 7.5
-crystal 60L: 7.5
-chocolate: 6
-flaked oats: 3.5
-flaked barley: 3.5
+Pale Malt (2 Row) US: 55
+Milk Sugar (Lactose): 8
+Roasted Barley: 7.5
+Munich Malt - 20L: 7.5
+Caramel/Crystal Malt - 60L: 7.5
+Chocolate Malt: 6
+Oats Flaked: 3.5
+Barley Flaked: 3.5
 
 Begin Yeast
 1	campden tablet per 5 gallons of water
